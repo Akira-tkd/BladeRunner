@@ -840,6 +840,54 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "VR",
+            "id": "3516e066-3149-45f0-bd17-9906121886ac",
+            "actions": [
+                {
+                    "name": "LeftGrab",
+                    "type": "Button",
+                    "id": "1449c2c7-f41b-4065-bca8-13beae6e143b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightGrab",
+                    "type": "Button",
+                    "id": "90fa1766-ab7b-4ec9-952e-0b0dd559e121",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "bad2ad68-2bf6-4a79-9de8-3396bcd30af0",
+                    "path": "<XRController>{LeftHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "57429323-f152-4b62-8a73-c65e20b8ce93",
+                    "path": "<XRController>{RightHand}/triggerPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

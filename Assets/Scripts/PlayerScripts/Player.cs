@@ -1,0 +1,61 @@
+using UnityEngine;
+using System.Collections.Generic;
+
+public class Player : MonoBehaviour
+{
+    public static Player Instance;
+
+    public List<Enemy> TargetList;
+
+
+    [SerializeField] float _speed;
+    [SerializeField] Vector3 _offset;
+    [SerializeField] Rigidbody _rb;
+    [SerializeField] GrabHandler _leftHand;
+    [SerializeField] GrabHandler _rightHand;
+    //[SerializeField] Transform _camera;
+
+    private float _movement;
+    public int _hit;
+
+    void Awake()
+    {
+        Instance = this;
+    }
+
+    void Update()
+    {
+        /*this.transform.position = _camera.position + _offset;
+        var rotation = _camera.rotation;
+        rotation.x = 0;
+        rotation.z = 0;
+        this.transform.rotation = rotation;*/
+
+        _movement = 0;
+        if (!_leftHand.Grab)
+        {
+            _movement += _leftHand.Dif;
+        }
+        if (!_rightHand.Grab)
+        {
+            _movement += _rightHand.Dif;
+        }
+
+        if (_movement > 0)
+        {
+            _rb.AddForce(this.transform.forward * _movement * _speed);
+        }
+    }
+
+    void OnTriggerEnter(Collider c)
+    {
+        if (c.gameObject.CompareTag("EnemyBlade"))
+        {
+            if (c.gameObject.GetComponent<EnemyBlade>().Active && !c.gameObject.GetComponent<EnemyBlade>().Hit)
+            {
+                _hit++;
+                c.gameObject.GetComponent<EnemyBlade>().Hit = true;
+            }
+        }
+    }
+}
