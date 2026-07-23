@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] Rigidbody _rb;
     [SerializeField] GrabHandler _leftHand;
     [SerializeField] GrabHandler _rightHand;
-    //[SerializeField] Transform _camera;
+    [SerializeField] Transform _camera;
 
     private float _movement;
     public int _hit;
@@ -25,11 +25,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        /*this.transform.position = _camera.position + _offset;
+        _camera.position = this.transform.position + _offset;
         var rotation = _camera.rotation;
         rotation.x = 0;
         rotation.z = 0;
-        this.transform.rotation = rotation;*/
+        this.transform.rotation = rotation;
 
         _movement = 0;
         if (!_leftHand.Grab)

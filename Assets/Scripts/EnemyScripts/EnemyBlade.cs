@@ -20,13 +20,11 @@ public class EnemyBlade : MonoBehaviour
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Attack_1_InPlace") && !Active)
         {
-            Debug.Log("ON");
             Hit = false;
             Active = true;
         }
         else if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Enemy_Attack_1_InPlace") && Active)
         {
-            Debug.Log("OFF");
             Active = false;
         }
     }
