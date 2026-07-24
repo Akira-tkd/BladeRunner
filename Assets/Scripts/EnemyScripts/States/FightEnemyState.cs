@@ -8,10 +8,10 @@ public class FightEnemyState : EnemyState
     private const float Speed = 2f;  // ˆÚ“®‘¬“x
     private const float SerachDistance = 5.0f;  // SearchƒXƒe[ƒg‚ÉˆÚs‚·‚é‹——£
     private const float MoveSpan = 0.5f;  // ˆÚ“®æ‚ğÄİ’è‚·‚é‚Ü‚Å‚ÌŠÔŠu
-    private const float MinAttackSpan = 10.0f;  // ÄUŒ‚‚Ü‚Å‚ÌÅ’ZŠÔ
-    private const float MaxAttackSpan = 20.0f;  // ÄUŒ‚‚Ü‚Å‚ÌÅ’·ŠÔ
-    private const float MinAngleChange = -10.0f;  // ˆê‰ñ‚ÌˆÚ“®‚ÌÅ¬Šp“x
-    private const float MaxAngleChange = 10.0f;  // ˆê‰ñ‚ÌˆÚ“®‚ÌÅ‘åŠp“x
+    private const float MinAttackSpan = 3.0f;  // ÄUŒ‚‚Ü‚Å‚ÌÅ’ZŠÔ
+    private const float MaxAttackSpan = 8.0f;  // ÄUŒ‚‚Ü‚Å‚ÌÅ’·ŠÔ
+    private const float MinAngleChange = -3.0f;  // ˆê‰ñ‚ÌˆÚ“®‚ÌÅ¬Šp“x
+    private const float MaxAngleChange = 3.0f;  // ˆê‰ñ‚ÌˆÚ“®‚ÌÅ‘åŠp“x
 
     private EnemyContext _context;  // s“®”»’f‚É•K—v‚Èî•ñ
     private float _attackSpan;  // UŒ‚ŠÔŠu(ƒ‰ƒ“ƒ_ƒ€‚Å•ÏX‚³‚ê‚é)

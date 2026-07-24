@@ -7,5 +7,6 @@ public class PlayerHandTracker : MonoBehaviour
     void Update()
     {
         this.transform.position = _tranckerObject.position;
+        this.transform.rotation = _tranckerObject.rotation;
     }
 }

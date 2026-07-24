@@ -3,6 +3,54 @@
     "name": "VRBladeRun",
     "maps": [
         {
+            "name": "VR",
+            "id": "3516e066-3149-45f0-bd17-9906121886ac",
+            "actions": [
+                {
+                    "name": "LeftGrab",
+                    "type": "Button",
+                    "id": "1449c2c7-f41b-4065-bca8-13beae6e143b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "RightGrab",
+                    "type": "Button",
+                    "id": "90fa1766-ab7b-4ec9-952e-0b0dd559e121",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "eb5f4043-f038-4e99-98fc-d3a410a6c000",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerLeft>{LeftHand}/triggerpressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XR",
+                    "action": "LeftGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "76a35aad-6654-4067-b2f3-a3d86b2fb011",
+                    "path": "<XRInputV1::Oculus::OculusTouchControllerRight>{RightHand}/triggerpressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RightGrab",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "Player",
             "id": "4f677490-d799-4643-a5d7-500810e1652a",
             "actions": [
@@ -28,7 +76,7 @@
                     "name": "Fire",
                     "type": "Button",
                     "id": "c15bf420-9e36-45fe-91cb-f7ac9b0e9f40",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -836,54 +884,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Test3",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "VR",
-            "id": "3516e066-3149-45f0-bd17-9906121886ac",
-            "actions": [
-                {
-                    "name": "LeftGrab",
-                    "type": "Button",
-                    "id": "1449c2c7-f41b-4065-bca8-13beae6e143b",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "RightGrab",
-                    "type": "Button",
-                    "id": "90fa1766-ab7b-4ec9-952e-0b0dd559e121",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "bad2ad68-2bf6-4a79-9de8-3396bcd30af0",
-                    "path": "<XRController>{LeftHand}/triggerPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "LeftGrab",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "57429323-f152-4b62-8a73-c65e20b8ce93",
-                    "path": "<XRController>{RightHand}/triggerPressed",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "RightGrab",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

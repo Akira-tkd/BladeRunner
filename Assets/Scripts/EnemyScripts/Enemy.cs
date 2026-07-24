@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] Animator _animator;
 
     private EnemyStateMachine _esm;
+    private bool _death = false;
+    private float _deathTime = 0;
 
     void Start()
     {
@@ -33,6 +35,14 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         _esm.CurrentState.OnUpdate();
+        if(_death)
+        {
+            _deathTime += Time.deltaTime;
+            if(_deathTime > 1)
+            {
+                Destroy(this.gameObject);
+            }
+        }
     }
 
     void OnTriggerEnter(Collider c)
@@ -42,6 +52,7 @@ public class Enemy : MonoBehaviour
             if (c.gameObject.GetComponent<BladeController>().Active)
             {
                 _esm.ChangeState(new DeathEnemyState(_esm));
+                _death = true;
             }
         }
     }
