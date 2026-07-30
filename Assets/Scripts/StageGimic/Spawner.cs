@@ -3,18 +3,19 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     [SerializeField] GameObject _enemy;
+    [SerializeField] BoxCollider _c;
+    [SerializeField] int _spawnNum;
 
-    public void Spawn(int spawnNum, Vector3 corner1, Vector3 corner2)
+    public void Spawn()
     {
-        for(int i = 0; i < spawnNum; i++)
+        for(int i = 0; i < _spawnNum; i++)
         {
             var obj = Instantiate(_enemy);
-            float spawnX, spawnY, spawnZ;
-            spawnX = Random.Range(corner1.x, corner2.x);
-            spawnY = Random.Range(corner1.y, corner2.y);
-            spawnZ = Random.Range(corner1.z, corner2.z);
+            float spawnX, spawnZ;
+            spawnX = Random.Range(_c.bounds.min.x, _c.bounds.max.x);
+            spawnZ = Random.Range(_c.bounds.min.z, _c.bounds.max.z);
 
-            obj.transform.position = new Vector3(spawnX, spawnY, spawnZ);
+            obj.transform.position = new Vector3(spawnX, 1, spawnZ);
         }
     }
 }
