@@ -16,9 +16,11 @@ public class Player : MonoBehaviour
     [SerializeField] Transform _camera;
     [SerializeField] Transform _rig;
     [SerializeField] Transform _forward;
+    [SerializeField] AudioSource _loopAS;
+    [SerializeField] AudioSource _oneshotAS;
+    [SerializeField] AudioClip _hitSE;
 
     private float _movement;
-    public int _hit;
 
     void Awake()
     {
@@ -37,11 +39,23 @@ public class Player : MonoBehaviour
         _movement += _leftHand.Dif;
         _movement += _rightHand.Dif;
 
-        if (_movement > 0)
+        if (_movement > 0 && _rb.linearVelocity.magnitude < 5f)
         {
             Vector3 forward = (_forward.position - this.transform.position).normalized;
             forward.y = 0;
             _rb.AddForce(forward * _movement * _speed);
+        }
+
+        if(_rb.linearVelocity.magnitude > 1f)
+        {
+            if (!_loopAS.isPlaying)
+            {
+                _loopAS.Play();
+            }
+        }
+        else
+        {
+            _loopAS.Stop();
         }
     }
 
@@ -51,8 +65,10 @@ public class Player : MonoBehaviour
         {
             if (c.gameObject.GetComponent<EnemyBlade>().Active && !c.gameObject.GetComponent<EnemyBlade>().Hit)
             {
-                _hit++;
                 c.gameObject.GetComponent<EnemyBlade>().Hit = true;
+
+                ScoreManager.Instance.HitNum++;
+                _oneshotAS.PlayOneShot(_hitSE);
             }
         }
     }

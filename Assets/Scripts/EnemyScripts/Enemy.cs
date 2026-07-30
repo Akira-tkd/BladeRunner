@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] NavMeshAgent _agent;
     [SerializeField] Animator _animator;
+    [SerializeField] AudioSource _loopAS;
+    [SerializeField] AudioSource _oneshotAS;
+    [SerializeField] AudioClip _hitSE;
 
     private EnemyStateMachine _esm;
     private bool _death = false;
@@ -43,16 +46,31 @@ public class Enemy : MonoBehaviour
                 Destroy(this.gameObject);
             }
         }
+
+        if(_agent.velocity.magnitude > 1f)
+        {
+            if(!_loopAS.isPlaying)
+            {
+                _loopAS.Play();
+            }
+        }
+        else
+        {
+            _loopAS.Stop();
+        }
     }
 
     void OnTriggerEnter(Collider c)
     {
-        if (c.gameObject.CompareTag("Blade"))
+        if (c.gameObject.CompareTag("Blade") && !_death)
         {
             if (c.gameObject.GetComponent<BladeController>().Active)
             {
                 _esm.ChangeState(new DeathEnemyState(_esm));
                 _death = true;
+
+                ScoreManager.Instance.KillNum++;
+                _oneshotAS.PlayOneShot(_hitSE);
             }
         }
     }
