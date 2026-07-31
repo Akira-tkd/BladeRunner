@@ -5,16 +5,19 @@ public class BladeController : MonoBehaviour
     public bool Active {  get; private set; }
 
     [SerializeField] float _speedBorder;
-    private Vector3 _prePos;
+    [SerializeField] bool _left;
     private float _speed;
 
     void Update()
     {
-        if(_prePos != null)
+        if (_left)
         {
-            _speed = (transform.position - _prePos).magnitude;
+            _speed = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.LTouch).magnitude;
         }
-        _prePos = transform.position;
+        else
+        {
+            _speed = OVRInput.GetLocalControllerVelocity(OVRInput.Controller.RTouch).magnitude;
+        }
 
         if (_speed > _speedBorder && !Active)
         {

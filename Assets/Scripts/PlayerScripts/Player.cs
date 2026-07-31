@@ -1,5 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
+using Cysharp.Threading.Tasks;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -19,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] AudioSource _loopAS;
     [SerializeField] AudioSource _oneshotAS;
     [SerializeField] AudioClip _hitSE;
+    [SerializeField] GameObject _ps;
 
     private float _movement;
 
@@ -71,5 +74,29 @@ public class Player : MonoBehaviour
                 _oneshotAS.PlayOneShot(_hitSE);
             }
         }
+    }
+
+    public async void Dash()
+    {
+        float time = 0;
+        Vector3 before = _offset;
+        Vector3 after = transform.up * -0.5f + transform.forward * -1.5f;
+        while(time < 0.1f)
+        {
+            time += Time.deltaTime;
+            _offset = Vector3.Lerp(before, after, time / 0.1f);
+            await UniTask.Yield();
+        }
+        _ps.SetActive(true);
+        await UniTask.Delay(TimeSpan.FromSeconds(5f), DelayType.Realtime);
+        _ps.SetActive(false);
+        time = 0;
+        while(time < 0.1f)
+        {
+            time += Time.deltaTime;
+            _offset = Vector3.Lerp(after, before, time / 0.1f);
+            await UniTask.Yield();
+        }
+        
     }
 }

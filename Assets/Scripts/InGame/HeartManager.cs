@@ -15,24 +15,24 @@ public class HeartManager : MonoBehaviour
             switch (ScoreManager.Instance.HitNum)
             {
                 case 0:
-                    Heart1.SetActive(false);
-                    Heart2.SetActive(false);
-                    Heart3.SetActive(false);
+                    Heart1.SetActive(true);
+                    Heart2.SetActive(true);
+                    Heart3.SetActive(true);
                     break;
                 case 1:
                     Heart1.SetActive(true);
-                    Heart2.SetActive(false);
+                    Heart2.SetActive(true);
                     Heart3.SetActive(false);
                     break;
                 case 2:
                     Heart1.SetActive(true);
-                    Heart2.SetActive(true);
+                    Heart2.SetActive(false);
                     Heart3.SetActive(false);
                     break;
                 case 3:
-                    Heart1.SetActive(true);
-                    Heart2.SetActive(true);
-                    Heart3.SetActive(true);
+                    Heart1.SetActive(false);
+                    Heart2.SetActive(false);
+                    Heart3.SetActive(false);
                     break;
                 default:
                     Debug.LogWarning("ハートエラー");

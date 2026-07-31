@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
 public class GameManager : MonoBehaviour
@@ -8,10 +7,6 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     public float Duration;
-    public List<GemStone> GemList = new List<GemStone>();
-    [SerializeField] List<GameObject> _objects;
-
-    private bool _isRefreshing;
     void Awake()
     {
         if (Instance == null)
@@ -32,21 +27,5 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene("Result");
         }
-
-        if(GemList.Count == 0 && !_isRefreshing)
-        {
-            _isRefreshing = true;
-            RefreshGem();
-        }
-    }
-
-    async void RefreshGem()
-    {
-        await UniTask.Delay(60);
-        foreach (var gem in _objects)
-        {
-            gem.SetActive(true);
-        }
-        _isRefreshing = false;
     }
 }

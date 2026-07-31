@@ -20,5 +20,6 @@ public class ScoreText : MonoBehaviour
         text += "被攻撃回数：" + sm.HitNum.ToString() + "\n\n";
         text += "総合スコア：" + score.ToString();
 
+        _tmp.text = text;
     }
 }

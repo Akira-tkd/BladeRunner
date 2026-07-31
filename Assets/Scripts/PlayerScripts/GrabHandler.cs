@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class GrabHandler : MonoBehaviour
 {
     [SerializeField] GameObject _sword;
+    [SerializeField] GameObject _hand;
     [SerializeField] bool _left;
 
     public bool Grab = false;
@@ -35,11 +36,13 @@ public class GrabHandler : MonoBehaviour
         if (context.performed)
         {
             _sword.SetActive(true);
+            _hand.SetActive(false);
             Grab = true;
         }
         else if (context.canceled)
         {
             _sword.SetActive(false);
+            _hand.SetActive(true);
             Grab = false;
         }
     }

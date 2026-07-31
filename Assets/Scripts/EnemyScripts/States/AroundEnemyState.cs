@@ -4,7 +4,7 @@ public class AroundEnemyState : EnemyState
 {
     public AroundEnemyState(EnemyStateMachine esm) : base(esm) { }
 
-    private const float Offset = 4f;  // 自ら保つプレイヤーとの距離
+    private const float Offset = 2f;  // 自ら保つプレイヤーとの距離
     private const float Span = 1f;  // 移動するスパン
     private const float Speed = 2.0f;  // 移動速度
     private const float SerachDistance = 8f;  // Searchステートに移る距離
